@@ -14,12 +14,15 @@ import java.util.List;
 @AllArgsConstructor
 public class Story {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private boolean status;
+    private boolean state;
     private LocalDate createdAt;
     private LocalDate updatedAt;
     @OneToMany (mappedBy = "story")
     private LinkedList<StoryFragment> storyFragments;
+    @ManyToOne
+    @JoinColumn(name = "started_by")
+    private UserEntity user;
 }

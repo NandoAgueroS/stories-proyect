@@ -12,11 +12,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class StoryFragment {
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
     private LocalDate createdAt;
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private UserEntity user;
 }
