@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.LinkedList;
 
 @Entity
+@Table(name = "user")
 @Getter @Setter
 @AllArgsConstructor
 public class UserEntity {
@@ -16,5 +17,5 @@ public class UserEntity {
     private Long id;
     private String userName;
     @OneToMany(mappedBy = "user")
-    private LinkedList<Story> stories;
+    private LinkedList<StoryEntity> stories;
 }

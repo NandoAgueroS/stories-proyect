@@ -7,12 +7,12 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
-import java.util.List;
 
 @Entity
+@Table(name="story")
 @Getter @Setter
 @AllArgsConstructor
-public class Story {
+public class StoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +21,7 @@ public class Story {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     @OneToMany (mappedBy = "story")
-    private LinkedList<StoryFragment> storyFragments;
+    private LinkedList<StoryFragmentEntity> storyFragments;
     @ManyToOne
     @JoinColumn(name = "started_by")
     private UserEntity user;

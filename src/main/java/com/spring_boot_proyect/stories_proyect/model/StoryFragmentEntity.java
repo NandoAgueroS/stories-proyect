@@ -8,9 +8,10 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="story_fragment")
 @Getter @Setter
 @AllArgsConstructor
-public class StoryFragment {
+public class StoryFragmentEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +19,7 @@ public class StoryFragment {
     private LocalDate createdAt;
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
-    private Story story;
+    private StoryEntity story;
     @ManyToOne
     @JoinColumn(name = "created_by")
     private UserEntity user;
