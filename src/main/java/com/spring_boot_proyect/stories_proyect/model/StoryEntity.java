@@ -25,4 +25,7 @@ public class StoryEntity {
     @ManyToOne
     @JoinColumn(name = "started_by")
     private UserEntity user;
+    @ManyToOne
+    @JoinColumn(name = "room_code")
+    private RoomEntity room;
 }

@@ -8,26 +8,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.LinkedList;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id"
+        property = "code"
 )
-@Table(name = "user")
+@Table(name = "room")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntity {
+public class RoomEntity {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String userName;
-    @OneToMany(mappedBy = "user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long code;
+    @OneToMany(mappedBy = "room")
     private List<StoryEntity> stories;
-    @ManyToOne
-    @JoinColumn(name="current_room")
-    private RoomEntity currentRoom;
+    @OneToMany(mappedBy = "currentRoom")
+    private List<UserEntity> users;
+    private LocalDateTime lastActivity;
 }
