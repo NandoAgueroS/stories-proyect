@@ -1,22 +1,31 @@
 package com.spring_boot_proyect.stories_proyect.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 @Table(name="story_fragment")
 @Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class StoryFragmentEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private StoryEntity story;

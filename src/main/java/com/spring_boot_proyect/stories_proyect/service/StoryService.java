@@ -3,10 +3,11 @@ package com.spring_boot_proyect.stories_proyect.service;
 import com.spring_boot_proyect.stories_proyect.model.StoryEntity;
 import com.spring_boot_proyect.stories_proyect.repository.IStoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class StoryService implements IStoryService{
     @Autowired
     private IStoryRepository iStoryRepository;
@@ -39,5 +40,10 @@ public class StoryService implements IStoryService{
         iStoryRepository.deleteById(id);
         boolean deleted = iStoryRepository.findById(id).orElse(null)==null ? true : false;
         return deleted;
+    }
+
+    @Override
+    public List<StoryEntity> findByRoomCode(Long code) {
+        return iStoryRepository.findAllByRoomCode(code);
     }
 }

@@ -10,4 +10,5 @@ public interface IStoryService {
     public StoryEntity save(StoryEntity story);
     public StoryEntity update(StoryEntity story);
     public boolean delete(Long id);
+    public List<StoryEntity> findByRoomCode(Long code);
 }
