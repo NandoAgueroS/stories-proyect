@@ -3,10 +3,7 @@ package com.spring_boot_proyect.stories_proyect.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,13 +17,12 @@ import java.util.List;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class UserEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String userName;
-    @OneToMany(mappedBy = "user")
-    private List<StoryEntity> stories;
     @ManyToOne
     @JoinColumn(name="current_room")
     private RoomEntity currentRoom;

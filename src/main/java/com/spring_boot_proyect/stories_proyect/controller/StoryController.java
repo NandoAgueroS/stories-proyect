@@ -32,6 +32,13 @@ public class StoryController {
         System.out.println(stories);*/
         return stories;
     }
+    @GetMapping("/get-fragments")
+    public List<StoryFragmentEntity> getFragments(){
+        List<StoryFragmentEntity> fragments = iStoryFragmentService.findAll();
+        /*System.out.println(code);
+        System.out.println(stories);*/
+        return fragments;
+    }
     @PostMapping("/add-fragment")
     public StoryFragmentEntity addFragment(@RequestBody StoryFragmentEntity storyFragment){
         storyFragment.setCreatedAt(LocalDateTime.now());

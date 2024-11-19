@@ -1,10 +1,10 @@
 package com.spring_boot_proyect.stories_proyect.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,10 +12,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 @Table(name="story")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class StoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +33,7 @@ public class StoryEntity {
     private List<StoryFragmentEntity> storyFragments;
     @ManyToOne
     @JoinColumn(name = "started_by")
-    private UserEntity user;
+    private UserEntity startedBy;
     @ManyToOne
     @JoinColumn(name = "room_code")
     private RoomEntity room;

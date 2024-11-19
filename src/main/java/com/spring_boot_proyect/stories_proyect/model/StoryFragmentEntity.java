@@ -3,10 +3,7 @@ package com.spring_boot_proyect.stories_proyect.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,6 +17,7 @@ import java.time.LocalDateTime;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class StoryFragmentEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -31,5 +29,5 @@ public class StoryFragmentEntity {
     private StoryEntity story;
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private UserEntity user;
+    private UserEntity createdBy;
 }

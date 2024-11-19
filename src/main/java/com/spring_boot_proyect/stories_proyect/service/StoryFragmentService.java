@@ -5,6 +5,8 @@ import com.spring_boot_proyect.stories_proyect.repository.IStoryFragmentReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StoryFragmentService implements IStoryFragmentService {
     @Autowired
@@ -19,5 +21,10 @@ public class StoryFragmentService implements IStoryFragmentService {
     public StoryFragmentEntity save(StoryFragmentEntity storyFragment) {
         StoryFragmentEntity savedStoryFragment = iStoryFragmentRepository.save(storyFragment);
         return savedStoryFragment;
+    }
+
+    @Override
+    public List<StoryFragmentEntity> findAll() {
+        return iStoryFragmentRepository.findAll();
     }
 }
